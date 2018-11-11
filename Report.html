@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <?php
+
+      $input="";
+      $servername="localhost";
+      $username="root";
+      $password="";
+      $dbname="faculty";
+      $conn = new mysqli($servername, $username, $password, $dbname); // $servername $username $passwor $dbname will passed
+      // Check connection
+      if ($conn->connect_error) {
+          die("Connection failed: " . $conn->connect_error);
+      }
+      $query="select seminar from professional";
+      $result=mysqli_query($conn,$query);
+      $query1="select number_of_research from research";
+      $result1=mysqli_query($conn,$query1);
+
+      if(isset($_POST['Generate']))
+      {
+        $name=$_POST["ide"];
+        $query2="select f_id from research WHERE Number_of_research='$name'";
+        $result2=mysqli_query($conn,$query2);
+        while($row=mysqli_fetch_array($result2)):;
+        echo $row[0];
+        endwhile;
+      }
+    ?>
+
+  </head>
+  <body>
+
+  <div class="container" >
+    <center><h2>Report Generation</h2></center>
+  </div>
+  </br></br>
+  <form  class="form-horizontal" action="" method="post" target="_blank">
+    <div class="form-group ">
+        <label class="control-label col-sm-4" for="email">Number_of_seminar_conducted</label>
+        <div class="col-sm-5">
+          <select class="form-control" id="#sel1" name="ide" required>
+            <option value="1" selected>Select..</option>
+            <?php while($row=mysqli_fetch_array($result)):;?>
+            <option><?php echo $row[0];?></option>
+          <?php endwhile;?>
+          <!---->
+          <?php if (isset($ide) && $ide=="2") echo "checked";?>
+          </select>
+        </div>
+      </div>
+      <div class="form-group ">
+        <label class="control-label col-sm-4" for="Number_of_research">Number_of_research</label>
+        <div class="col-sm-5">
+          <select name="seminar" class="form-control" id="sel2"  required>
+              <option value="1" selected>Select..</option>
+            <?php while($row=mysqli_fetch_array($result1)):;?>
+            <option><?php echo $row[0];?></option>
+          <?php endwhile;?>
+          </select>
+        </div>
+      </div>
+      <div class="form-group" id="ide">
+        <label class="control-label col-sm-4">Start Date</label>
+        <div class="col-sm-5">
+            <input type="date" class="form-control" name="Start date" required>
+       </div>
+    </div>
+        <div class="form-group">
+          <label class="control-label col-sm-4">End Date</label>
+          <div class="col-sm-5">
+               <input type="date" class="form-control" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-4">Experience(in years)</label>
+        <div class="col-sm-5">
+        <input type="number" min="0" class="form-control" required>
+      </div>
+    </div>
+       <div class="form-group ">
+         <label class="control-label col-sm-4" for="email">Report-Format:</label>
+         <div class="col-sm-5">
+           <select class="form-control" id="sel1" name="doc1" required>
+             <option></option>
+             <option>Doc File</option>
+             <option>Excel File</option>
+           </select>
+      </div>
+   </div>
+       <div class="modal-footer">
+        <input type="submit" class="btn btn-info" name="Generate" value="Generate"></input>
+    </div>
+
+
+  </div>
+  </form>
+  </div>
+</body>
+</html>

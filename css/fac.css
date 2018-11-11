@@ -1,0 +1,32 @@
+.nav-tabs
+{
+  margin:40px;
+}
+.card-header
+{
+  height:50px;
+  font-size:20px;
+}
+.fa-edit,.fa-plus
+{
+  float:right;
+  margin-left:10px;
+}
+.fa-trash
+{
+  float:right;
+}
+
+#oldm,#newm,#newconm,#message
+{
+  color:red;
+}
+.profile-img{
+    margin-top: -5px;
+    margin-right: 5px;
+    float: left;
+    background: url(example.jpg) 50% 50% no-repeat; /* 50% 50% centers image in div */
+    background-size: auto 100%; /* Interchange this value depending on prefering width vs. height */
+    width: 30px;
+    height: 30px;
+}

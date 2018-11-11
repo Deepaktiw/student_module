@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+</script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <!-- QR code genaration-->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+</script>
+</head>
+   <body>
+      <script>
+      function generateBarCode()
+      {
+        var nric = $('#text').val();
+        var url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + nric + '&amp;size=50x50' ;
+        $('#barcode').attr('src', url);
+      }
+
+      function myPopup(myURL, title, myWidth, myHeight) {
+        var left = (screen.width - myWidth) / 2;
+        var top = (screen.height - myHeight) / 4;
+        var myWindow = window.open(myURL, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + myWidth + ', height=' + myHeight + ', top=' + top + ', left=' + left);
+
+      }
+      function imgWindow() {
+  window.open("image") }
+
+      </script>
+      <center>
+                      <img id='barcode'
+                       src="https://api.qrserver.com/v1/create-qr-code/?data=HelloWorld&amp;size=100x100"
+                       alt=""
+                       title=""
+                       width="200"
+                       height="250"
+                       onclick="image();"
+                       /></center>
+                       <div>
+      <label for="usr">Name:</label>
+      <input  id="text"  type="text" class="form-control"  style="Width:100%  align:center"  >
+      <script>
+      var fname = document.getElementById("text").value;
+      </script>
+      <center><button type="button" class="btn btn-info" id ="dr" onclick="generateBarCode();" value="Click me">Button</button></center>
+        <center><button type="button" class="btn btn-info" id ="dr"  value="Click me">Button</button></center>
+    </div>
+   </body>
+</html>
+<!--function myPopup(myURL, title, myWidth, myHeight) {
+  var left = (screen.width - myWidth) / 2;
+  var top = (screen.height - myHeight) / 4;
+  var myWindow = window.open(myURL, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + myWidth + ', height=' + myHeight + ', top=' + top + ', left=' + left);
+
+}

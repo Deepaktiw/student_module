@@ -1,0 +1,51 @@
+{
+  "$jason": {
+    "body": {
+      "background": {
+        "type": "camera",
+        "options": {
+          "device": "back"
+        }
+      }
+    }
+  }
+}
+
+{
+  "$jason": {
+    "head": {
+      "actions": {
+        "$vision.ready": {
+          "type": "$vision.scan"
+        }
+      }
+    },
+    "body": {
+      "background": {
+        "type": "camera",
+        "options": {
+          "device": "back"
+        }
+      }
+    }
+  }
+}
+{
+  "$jason": {
+    "head": {
+      "actions": {
+        "$vision.ready": {
+          "type": "$vision.scan"
+        }
+      }
+    },
+    "body": {
+      "background": {
+        "type": "camera",
+        "options": {
+          "device": "back"
+        }
+      }
+    }
+  }
+}

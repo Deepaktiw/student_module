@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<head>
+  <title>Welcome</title>
+  <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+</script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <!-- QR code genaration-->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+</script>
+<script src="js/fac.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/fac.css" />
+  <script type="text/javascript">
+  $(document).ready(function(){
+	$('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+		localStorage.setItem('activeTab', $(e.target).attr('href'));
+	});
+	var activeTab = localStorage.getItem('activeTab');
+	if(activeTab){
+		$('#myTab a[href="' + activeTab + '"]').tab('show');
+	}
+
+});
+
+function generateBarCode()
+{
+
+    var nric = $('#text').val();
+    var url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + nric + '&amp;size=150x150' ;
+    $('#barcode').attr('src', url);
+     $("#barcode").attr('data' ,"bookmark.swf");
+
+}
+
+function image(img) {
+    var src = img.src;
+    window.open(src);
+}
+
+  </script>
+</head>
+<body background="wallpaper/wallpaper7.jpg">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">Icfai Tech School</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation" style="">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  <ul class="navbar-nav ml-auto">
+
+        <a class="nav-link disabled active">
+          <?php
+session_start();
+$_SESSION["user1"];
+if($_SESSION["user1"]==true)
+{
+echo " welcome ". $_SESSION["user1"];
+}
+else
+{
+  header('location:index.html');
+}
+?></a>
+        <a class="nav-link" href="index.html">Log out</a>
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">Change your password</a>
+
+    </ul>
+
+  </nav>
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Set a strong password</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label class="form-control-label">Old password</label>
+                <input type="password" id="old" class="form-control">
+                <div id="oldm"> </div>
+            </div>
+            <div class="form-group">
+              <label class="form-control-label">New password</label>
+                <input type="password" id="new" class="form-control">
+                <div id="newm"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-control-label">Confirm New password</label>
+                <input type="password" id="newcon" class="form-control">
+                <div id="newconm"></div>
+            </div>
+            <div id="message">
+
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="passwordvalidate">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul class="nav nav-tabs" role="tablist" id="myTab">
+      <li class="nav-item">
+        <a class="nav-link" style="margin-right: 26px; font-size:30px" href="http://lms.ibsindia.org/login/index.php">Course</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="margi0n-right: 40px;  font-size:30px" href="http://tinyurl.com/yam6kgdk">Professional</a>
+      </li>
+       <li class="nav-item">
+      <a class="nav-link"  style="margin-right: 26px; margi0n-left: 30px; font-size:30px" href="quiz-app/pwa.html">Event</a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link" style="margin-left: ; font-size:30px" href="https://www.the-qrcode-generator.com/scan">Attendance</a>
+      </li>
+    </ul>
+
+    
+</div>
+</body>
+</html>
